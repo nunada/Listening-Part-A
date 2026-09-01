@@ -446,17 +446,19 @@
 const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbww4JvxQFNaJ3QBUwPOF9tkEiBN6U4ZUeJM71JXergWebSny_4IerXTwxz4G5-vA1gE/exec";
 
 /* =========================================================
-   2. QUESTION DATA (from Listening Part A booklet + Script & Answer Key)
+   2. QUESTION DATA — sourced from "TEP Teacher's Book",
+      Listening Comprehension: Script and Key Answers of Listening
+      (Exercise 1-4 only)
    ========================================================= */
 const EXERCISES = [
   {
     title: "Exercise 1",
-    subtitle: "Topics & Details",
+    subtitle: "Topics and Details",
     questions: [
       { options:["A new doctor","A party they attended","Their friend Mary","A graduate program"], correct:3,
-        script:"Woman: Do you know how many students were accepted in the new doctoral program?\nMan: Well, I saw Mary at the party last night and she said that only six got in.\nNarrator: What are the two people discussing?" },
+        script:"Man: Do you know how many students were accepted in the new doctoral program?\nWoman: Well, I saw Mary at the party last night, and she said that only six got in.\nNarrator: What are the two people discussing?" },
       { options:["An exchange program","The man's trip to England","The man's illness","Their friend Nancy"], correct:0,
-        script:"Man: I applied for the exchange program to Europe this year but I couldn't go because I got sick.\nWoman: That's too bad. Nancy went to England last year and she said it was really a great experience.\nNarrator: What are the man and woman discussing?" },
+        script:"Man: I applied for the exchange program to Europe this year but I couldn't go because I got sick.\nWoman: That's too bad. Nancy went to England last year, and she said it was really a great experience.\nNarrator: What are the man and the woman discussing?" },
       { options:["The professor's lecture","The woman's children","The chairs they are sitting in","The size of the lecture room"], correct:2,
         script:"Man: The chairs in that lecture room are really uncomfortable.\nWoman: You said it. They're so small that my children wouldn't even fit in them.\nNarrator: What are the man and woman talking about?" },
       { options:["The woman's computer","The woman's paper","The man's hometown","The man's job"], correct:0,
@@ -464,49 +466,49 @@ const EXERCISES = [
       { options:["The campus","Registration week","The parking situation","The woman's class"], correct:2,
         script:"Woman: I was late for class because I couldn't find a parking space.\nMan: It's because of registration week. I drove around for almost half an hour before I found one this morning.\nNarrator: What are the two people talking about?" },
       { options:["He is tired","He is drunk","He is thirsty","He is busy"], correct:0,
-        script:"Woman: You look awful. Do you have a hangover?\nMan: No, I've been up all night finishing a paper. All I've had to drink is coffee.\nNarrator: What is the man's problem?" },
+        script:"Woman: You look awful. Do you have a hangover?\nMan: No. I've been up all night finishing a paper. All I've had to drink is coffee.\nNarrator: What is the man's problem?" },
       { options:["Study with her","Help her on the test","Take a break","Lend her his notebook"], correct:3,
-        script:"Woman: I lost my notebook. Could I borrow yours before the test?\nMan: I'm sorry, I'd like to help you but I just can't. I have to take it with me to work so I can study on my breaks.\nNarrator: What does the woman want the man to do?" },
+        script:"Woman: I lost my notebook. Could I borrow yours before the test?\nMan: I'm sorry. I'd like to help you, but I just can't. I have to take it with me to work so I can study on my breaks.\nNarrator: What does the woman want the man to do?" },
       { options:["Steve's girlfriend","Steve's sister","Steve","Mary Anne"], correct:1,
-        script:"Woman: That looks like Steve's car, but who is that girl driving it?\nMan: Oh, that's Steve's sister. I met her last night at Mary Ann's party.\nNarrator: Who is driving Steve's car?" },
+        script:"Woman: That looks like Steve's car, but who is that girl driving it?\nMan: Oh, that's Steve's sister. I met her last night at Mary Anne's party.\nNarrator: Who is driving Steve's car?" },
       { options:["The door is locked","The woman doesn't have the right key","The door is stuck","The doorknob is broken"], correct:2,
-        script:"Man: The door seems to be locked. Do I need a key for the bathroom?\nWoman: No, just push hard. It sticks a little.\nNarrator: Why won't the door open?" },
+        script:"Woman: The door seems to be locked. Do I need a key for the bathroom?\nMan: No. Just push hard. It sticks a little.\nNarrator: Why won't the door open?" },
       { options:["Check the calculators","Use a calculator to do his test","Purchase a calculator","Borrow a calculator"], correct:1,
         script:"Man: Can we use our calculators on the test?\nWoman: Yes, if you bring them to me at the beginning of the test, I'll check them out and return them right away so you can use them.\nNarrator: What does the man want to do?" }
     ]
   },
   {
     title: "Exercise 2",
-    subtitle: "Reversals & Problems",
+    subtitle: "Reversals and Problems",
     questions: [
       { options:["She would like eggs and potatoes","She wants eggs and pancakes","She wants to eat potato pancakes","Pancakes is what she would like to eat"], correct:1,
-        script:"Man: Okay, what'll you have?\nWoman: Give me the eggs and potatoes. Oh, wait a minute. How about the eggs and pancakes?\nNarrator: What does the woman want to eat?" },
+        script:"Man: Okay. What'll you have?\nWoman: Give me the eggs and potatoes. Oh, wait a minute. How about the eggs and pancakes?\nNarrator: What does the woman want to eat?" },
       { options:["The man bought one box of cookies","The man ordered four boxes of cookies","He purchased five boxes of cookies","He did not order any cookies this year"], correct:2,
-        script:"Woman: How many boxes of Girl Scout cookies did you order?\nMan: Four. No, five.\nNarrator: How many boxes of cookies did the man order?" },
+        script:"Woman: How many boxes of Girl Scout cookies did you order?\nMan: Four, no, five.\nNarrator: How many boxes of cookies did the man order?" },
       { options:["The number is 6-9-1","The area code is 1-9-6","9-1-6 is the area code","6-1-9 is the correct number"], correct:3,
-        script:"Man: What is the area code from which you are calling?\nWoman: 691... oops, that's not right. It's 619.\nNarrator: What is the correct area code for the woman?" },
+        script:"Man: What is the area code from which you are calling?\nWoman: 6-9-1. Oops, that's not right. It's 6-1-9.\nNarrator: What is the correct area code for the woman?" },
       { options:["See a documentary","Change the channel","Watch television","Go to a movie"], correct:3,
-        script:"Man: Let me see. There's a documentary about wolves on Channel 3.\nWoman: That sounds pretty interesting, but I'd rather go to the movies.\nNarrator: What does the woman want to do?" },
+        script:"Man: Let me see. There's a documentary about wolves on Channel Three.\nWoman: That sounds pretty interesting, but I'd rather go to the movies.\nNarrator: What does the woman want to do?" },
       { options:["The Country Kitchen","The Country Home","The Old House","The Old Kitchen"], correct:2,
-        script:"Man: Where shall we go for lunch? It's your turn to choose.\nWoman: How about The Country Kitchen? Or better yet, The Old House. They have great salads.\nNarrator: Where will the man and woman eat lunch?" },
+        script:"Man: Where shall we go for lunch? It's your turn to choose.\nWoman: How about The Country Kitchen, or better yet, The Old House. They have great salads.\nNarrator: Where will the man and woman eat lunch?" },
       { options:["He needs his advisor to sign the registration form","He does not have an academic advisor","He does not know how to register for next semester","He can't find his registration"], correct:0,
-        script:"Woman: What's the matter?\nMan: I can't register until I get my advisor's signature on my registration form, and as usual, I can't find him.\nNarrator: What is the man's problem?" },
+        script:"Woman: What's the matter?\nMan: I can't register until I get my advisor's signature on my registration form, and, as usual, I can't find him.\nNarrator: What is the man's problem?" },
       { options:["She does not have a car","She needs a ride","She is late to class","She has to go shopping"], correct:1,
-        script:"Woman: Can you give me a lift? My car's in the shop and I'm already late for work.\nMan: Sure. I'll drop you off on my way to class.\nNarrator: What is the woman's problem?" },
+        script:"Woman: Can you give me a lift? My car's in the shop and I'm already late to work.\nMan: Sure. I'll drop you off on my way to class.\nNarrator: What is the woman's problem?" },
       { options:["They don't have a good book for their class","They don't like Professor Jones","The professor changed the book this semester","Books are very expensive"], correct:2,
-        script:"Man: Great. Professor Jones is using a different book this semester. Now I'll have to buy a new one.\nWoman: Me too. My friend let me have a copy of the book he used last semester, but that won't do me any good now.\nNarrator: What is the problem that the man and woman are talking about?" },
+        script:"Woman: Great! Professor Jones is using a different book this semester. Now I'll have to buy a new one.\nMan: Me, too. My friend let me have a copy of the book he used last semester, but that won't do me any good now.\nNarrator: What is the problem that the man and woman are talking about?" },
       { options:["She has to wait for the telephone to be installed","She does not have a telephone","She has already seen the movie","She cannot go to the movie because she has company"], correct:0,
         script:"Woman: Sorry. I have to stay here until someone comes from the phone company to install my phone.\nMan: That's too bad. I wish you could go with us to the movie.\nNarrator: What is the woman's problem?" },
       { options:["She needs child care that is closer to the university","She needs someone to take care of her children while she is in class","She needs the man to help her more with the children","She needs to spend more time with the children"], correct:0,
-        script:"Woman: If the university had child care on campus, it would make my life a lot easier.\nMan: It really would. It must take a lot of time going back and forth to daycare all the way across town.\nNarrator: What is the woman's problem?" }
+        script:"Woman: If the university had child care on campus, it would make my life a lot easier.\nMan: It really would. It must take a lot of time going back and forth to day care all the way across town.\nNarrator: What is the woman's problem?" }
     ]
   },
   {
     title: "Exercise 3",
-    subtitle: "Idioms & Emotions",
+    subtitle: "Idioms and Emotions",
     questions: [
       { options:["She does not think that the man is serious","She thinks that the man is going to take her to Florida","She thinks that the man has a good idea","She thinks that the man does not have any money"], correct:0,
-        script:"Man: Let's go to Florida on spring break.\nWoman: You're putting me on.\nNarrator: What does the woman mean?" },
+        script:"Man: Let's go to Florida on spring break.\nWoman: You're putting me on!\nNarrator: What does the woman mean?" },
       { options:["She needs one more semester","She needs a hundred dollars","The increase will be difficult for her","The paper is not dependable"], correct:2,
         script:"Man: Can you believe it? It says in the paper that tuition is going up another hundred dollars a semester.\nWoman: That's just what I need.\nNarrator: What does the woman mean?" },
       { options:["He has left the lecture","He has used his last piece of paper","He has said good-bye to the woman","He has finished giving the lecture"], correct:1,
@@ -514,11 +516,11 @@ const EXERCISES = [
       { options:["He feels that the test was fair","He agrees with the woman about the test","He does not want the woman to tease him about the test","He is not worried about the test"], correct:1,
         script:"Woman: That test was not what I studied for.\nMan: No joke. I hope I passed it.\nNarrator: How does the man feel about the test?" },
       { options:["The man likes ice cream","The man will tell the woman later whether he wants ice cream","The man does not want to say whether he likes ice cream","The man will get some ice cream for the woman"], correct:0,
-        script:"Woman: Do you like ice cream?\nMan: I'll say.\nNarrator: What does the man mean?" },
+        script:"Woman: Do you like ice cream?\nMan: I'll say!\nNarrator: What does the man mean?" },
       { options:["He is angry with the woman","He wants to talk with the woman","It was a bad day for the man","He does not know what day it is"], correct:2,
         script:"Woman: How was your day?\nMan: Don't ask.\nNarrator: What does the man mean?" },
       { options:["He is worried","He is happy","He feels confident","He feels tired"], correct:2,
-        script:"Woman: Are you worried about getting a job after graduation?\nMan: No, I've had several good interviews and I can always work for my dad for a while.\nNarrator: How does the man feel?" },
+        script:"Woman: Are you worried about getting a job after graduation?\nMan: No. I've had several good interviews, and I can always work for my dad for a while.\nNarrator: How does the man feel?" },
       { options:["She does not know whether she did well","She thinks that she improved her score","She believes that she scored about 490","She is concerned about the reading comprehension section"], correct:1,
         script:"Man: Did you get your TOEFL scores yet?\nWoman: Not yet, but I think I got more than 500. I had 490 the first time I took it, and I know I did much better this time because I knew a lot about several of the reading comprehension passages.\nNarrator: How does the woman feel about the TOEFL?" },
       { options:["She believes that he is having a bad day","She does not like the man","She thinks that he never pays attention","She likes to help the man every day"], correct:2,
@@ -529,16 +531,16 @@ const EXERCISES = [
   },
   {
     title: "Exercise 4",
-    subtitle: "Suggestions & Assumption",
+    subtitle: "Suggestions and Assumptions",
     questions: [
       { options:["Return later","Telephone the security guard","Stay at the dorm","Look for the key"], correct:1,
-        script:"Woman: Oh no, we're locked out of the dorm. I didn't think it was that late.\nMan: Do you have a phone number for the security guard?\nNarrator: What does the man suggest the woman do?" },
+        script:"Woman: Oh, no. We're locked out of the dorm. I didn't think it was that late.\nMan: Do you have a phone number for the security guard?\nNarrator: What does the man suggest that the woman do?" },
       { options:["Find another bathroom","Use the bathroom in the main lobby","Ask the custodian to unlock the bathroom","Go to another building to locate a bathroom"], correct:2,
-        script:"Man: All the bathrooms are locked. That's odd.\nWoman: Why don't you go down to the main lobby? I think I saw a custodian there when we came in.\nNarrator: What does the woman suggest that the man do?" },
+        script:"Man: All the bathrooms are locked.\nWoman: That's odd. Why don't you go down to the main lobby? I think I saw a custodian there when we came in.\nNarrator: What does the woman suggest that the man do?" },
       { options:["Get in line behind him","Take a number","Come back later","Go to the end of the line"], correct:1,
         script:"Woman: Are you in line here?\nMan: We all are. You need to take a number.\nNarrator: What does the man suggest that the woman do?" },
-      { options:["Pick her up at 11:35 A.M","Wait for her at the airport","Wait for her to call him","Call the airport for the schedule"], correct:2,
-        script:"Man: I'll be glad to pick you up at the airport. What time does your plane arrive?\nWoman: Well, it's scheduled to be here at 11:35, but it might be late if the weather is bad out of Chicago. Why don't I call you when I get in?\nNarrator: What does the woman suggest that the man do?" },
+      { options:["Pick her up at 11:35 A.M.","Wait for her at the airport","Wait for her to call him","Call the airport for the schedule"], correct:2,
+        script:"Man: I'll be glad to pick you up at the airport. What time does your plane arrive?\nWoman: Well, it's scheduled to be here at eleven thirty-five, but it might be late if the weather is bad out of Chicago. Why don't I call you when I get in?\nNarrator: What does the woman suggest that the man do?" },
       { options:["Refer to the syllabus","Go to Dr. Watson's office","See Dr. Watson at 2:00 P.M.","Ask someone else"], correct:0,
         script:"Woman: When does Dr. Watson have her office hours this semester?\nMan: I think her hours are from two to three o'clock every day. I'm not sure, but I know it's on the syllabus.\nNarrator: What does the man suggest that the woman do?" },
       { options:["The test would not be timed","The test could be taken home to complete","He would be able to use his book during the test.","He would have to study very hard for the test"], correct:2,
@@ -550,7 +552,7 @@ const EXERCISES = [
       { options:["He was serious about becoming a doctor","He was not serious about changing majors","He was serious about going into the family business","He was not serious about applying for the business program"], correct:1,
         script:"Woman: John must have been joking when he said he was going to drop out of the business program to apply for medical school.\nMan: I don't think so. He seemed very serious to me.\nNarrator: What had the woman assumed about John?" },
       { options:["He would be late getting to the lab","He would be in the lab working","He would not set up the equipment","He would not have time to set up the equipment"], correct:0,
-        script:"Man: When we got there, Mr. Brown was already in the lab getting the equipment set up.\nWoman: You mean he was on time?\nNarrator: What had the woman assumed about Mr. Brown?" }
+        script:"Man: When we got there Mr. Brown was already in the lab getting the equipment set up.\nWoman: You mean he was on time?\nNarrator: What had the woman assumed about Mr. Brown?" }
     ]
   }
 ];
