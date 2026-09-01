@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOEFL Listening Practice — Part A</title>
+<style>
+  :root{
+    --navy:#0b2c5b;
+    --navy-dark:#071d3d;
+    --gold:#d9a441;
+    --green:#1e8e3e;
+    --red:#c62828;
+    --bg:#f4f6fa;
+    --card:#ffffff;
+    --border:#dde3ee;
+    --text:#1b2431;
+    --muted:#5b6576;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:"Segoe UI",Arial,Helvetica,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.5;
+  }
+  header.topbar{
+    background:linear-gradient(135deg,var(--navy),var(--navy-dark));
+    color:#fff;
+    padding:18px 24px;
+    display:flex;
+    align-items:center;
+    gap:16px;
+    box-shadow:0 2px 10px rgba(0,0,0,.15);
+  }
+  header.topbar img{
+    height:56px;
+    width:56px;
+    object-fit:contain;
+    background:#fff;
+    border-radius:8px;
+    padding:4px;
+  }
+  header.topbar .titles h1{
+    margin:0;
+    font-size:1.15rem;
+    letter-spacing:.3px;
+  }
+  header.topbar .titles p{
+    margin:2px 0 0;
+    font-size:.85rem;
+    color:#cfe0ff;
+  }
+  main{
+    max-width:820px;
+    margin:0 auto;
+    padding:24px 16px 80px;
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:24px;
+    box-shadow:0 1px 4px rgba(20,30,60,.06);
+    margin-bottom:20px;
+  }
+  .progress-bar{
+    display:flex;
+    gap:8px;
+    margin-bottom:22px;
+  }
+  .progress-step{
+    flex:1;
+    text-align:center;
+    padding:8px 4px;
+    border-radius:8px;
+    background:#e7ecf6;
+    color:var(--muted);
+    font-size:.78rem;
+    font-weight:600;
+    border:1px solid var(--border);
+  }
+  .progress-step.active{
+    background:var(--navy);
+    color:#fff;
+    border-color:var(--navy);
+  }
+  .progress-step.done{
+    background:#dff3e3;
+    color:var(--green);
+    border-color:#bfe6c9;
+  }
+  h2.section-title{
+    margin-top:0;
+    color:var(--navy);
+    font-size:1.3rem;
+    border-bottom:3px solid var(--gold);
+    display:inline-block;
+    padding-bottom:4px;
+  }
+  h3.exercise-subtitle{
+    margin:2px 0 18px;
+    color:var(--muted);
+    font-weight:600;
+    letter-spacing:.4px;
+    text-transform:uppercase;
+    font-size:.85rem;
+  }
+  label{
+    display:block;
+    font-weight:600;
+    margin:14px 0 6px;
+    font-size:.92rem;
+    color:var(--navy-dark);
+  }
+  input[type=text], select{
+    width:100%;
+    padding:10px 12px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    font-size:1rem;
+    background:#fff;
+    color:var(--text);
+  }
+  input[type=text]:focus, select:focus{
+    outline:2px solid var(--navy);
+    outline-offset:1px;
+  }
+  .hint{
+    font-size:.78rem;
+    color:var(--muted);
+    margin-top:4px;
+  }
+  .btn{
+    display:inline-block;
+    background:var(--navy);
+    color:#fff;
+    border:none;
+    padding:12px 22px;
+    border-radius:8px;
+    font-size:1rem;
+    font-weight:600;
+    cursor:pointer;
+    transition:background .15s;
+  }
+  .btn:hover{background:var(--navy-dark);}
+  .btn.secondary{
+    background:#fff;
+    color:var(--navy);
+    border:2px solid var(--navy);
+    padding:10px 20px;
+  }
+  .btn.gold{
+    background:var(--gold);
+    color:var(--navy-dark);
+  }
+  .btn:disabled{
+    background:#b7c1d6;
+    cursor:not-allowed;
+  }
+  .btn-row{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    margin-top:20px;
+  }
+  .question-block{
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:14px 16px;
+    margin-bottom:14px;
+    background:#fbfcfe;
+  }
+  .question-block .qnum{
+    font-weight:700;
+    color:var(--navy);
+    margin-bottom:8px;
+  }
+  .option-row{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    padding:6px 8px;
+    border-radius:6px;
+    cursor:pointer;
+  }
+  .option-row:hover{background:#eef2fb;}
+  .option-row input{margin-top:3px;}
+  .option-letter{font-weight:700;color:var(--navy-dark);}
+  .banner{
+    padding:10px 14px;
+    border-radius:8px;
+    font-size:.85rem;
+    margin-bottom:16px;
+  }
+  .banner.warn{background:#fff6e0;border:1px solid #f0d78c;color:#7a5b00;}
+  .banner.info{background:#e7f1ff;border:1px solid #bcd8ff;color:#0b2c5b;}
+  .review-item{
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:14px 16px;
+    margin-bottom:12px;
+  }
+  .review-item.correct{border-left:6px solid var(--green);}
+  .review-item.wrong{border-left:6px solid var(--red);}
+  .review-item .status{
+    font-weight:700;
+    font-size:.8rem;
+    text-transform:uppercase;
+    letter-spacing:.4px;
+  }
+  .review-item.correct .status{color:var(--green);}
+  .review-item.wrong .status{color:var(--red);}
+  .review-item .ans-line{margin:4px 0;font-size:.92rem;}
+  .review-item .script{
+    margin-top:8px;
+    background:#f4f6fa;
+    border-radius:8px;
+    padding:10px 12px;
+    font-size:.87rem;
+    color:#333;
+    white-space:pre-line;
+  }
+  .score-box{
+    text-align:center;
+    padding:22px;
+    background:linear-gradient(135deg,var(--navy),var(--navy-dark));
+    color:#fff;
+    border-radius:12px;
+    margin-bottom:20px;
+  }
+  .score-box .big{
+    font-size:2.4rem;
+    font-weight:800;
+    color:var(--gold);
+  }
+  table.summary-table{
+    width:100%;
+    border-collapse:collapse;
+    margin:14px 0;
+  }
+  table.summary-table th, table.summary-table td{
+    border:1px solid var(--border);
+    padding:8px 10px;
+    text-align:left;
+    font-size:.92rem;
+  }
+  table.summary-table th{background:#eef2fb;color:var(--navy-dark);}
+  .proof-box{
+    border:2px solid var(--navy);
+    border-radius:14px;
+    padding:24px;
+    background:#fff;
+    position:relative;
+  }
+  .proof-box:before{
+    content:"OFFICIAL RECORD";
+    position:absolute;
+    top:14px;
+    right:18px;
+    font-size:.68rem;
+    letter-spacing:1.5px;
+    color:var(--gold);
+    font-weight:700;
+  }
+  .proof-header{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    border-bottom:2px solid var(--border);
+    padding-bottom:14px;
+    margin-bottom:14px;
+  }
+  .proof-header img{height:60px;}
+  .proof-header .u-name{font-weight:800;color:var(--navy);font-size:1.05rem;}
+  .proof-header .u-sub{font-size:.8rem;color:var(--muted);}
+  .proof-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:6px 24px;
+    margin-bottom:14px;
+    font-size:.92rem;
+  }
+  .proof-grid div span.label{color:var(--muted);display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.4px;}
+  .stamp{
+    margin-top:18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    font-size:.78rem;
+    color:var(--muted);
+  }
+  .no-print{ }
+  footer.small{
+    text-align:center;
+    color:var(--muted);
+    font-size:.75rem;
+    margin-top:30px;
+  }
+  @media print{
+    header.topbar, .no-print, .progress-bar{display:none !important;}
+    body{background:#fff;}
+    main{max-width:100%;padding:0;}
+    .card{box-shadow:none;border:none;padding:0;}
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <img src="https://i.ibb.co.com/Gv1xXFQG/logo-Unesa.png" alt="UNESA Logo">
+  <div class="titles">
+    <h1>TOEFL Listening Comprehension Practice</h1>
+    <p>Part A — Short Conversations (Universitas Negeri Surabaya)</p>
+  </div>
+</header>
+
+<main>
+
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- SCREEN: STUDENT INFO -->
+  <section class="card" id="screen-info">
+    <h2 class="section-title">Student Information</h2>
+    <h3 class="exercise-subtitle">Please fill in your data before starting</h3>
+
+    <div class="banner info">This listening test consists of <b>4 exercises</b>, 10 questions each. Please listen to the audio provided separately by your instructor for each exercise, then answer the questions below. Your answers, score, and script/answer key will appear right after you submit each exercise.</div>
+
+    <label for="nim">Student ID (NIM) *</label>
+    <input type="text" id="nim" placeholder="e.g. 22030234000">
+
+    <label for="nama">Full Name *</label>
+    <input type="text" id="nama" placeholder="e.g. Nurus Saadah">
+
+    <label for="prodi">Study Program (Prodi) *</label>
+    <select id="prodi">
+      <option value="">-- Select Study Program --</option>
+      <option value="S1 Sains Aktuaria">S1 Sains Aktuaria</option>
+      <option value="S1 Matematika">S1 Matematika</option>
+      <option value="S1 Pendidikan Matematika">S1 Pendidikan Matematika</option>
+      <option value="Lainnya">Other (please specify)</option>
+    </select>
+    <input type="text" id="prodiOther" style="display:none;margin-top:8px;" placeholder="Please specify your study program">
+
+    <label for="kelas">Class *</label>
+    <select id="kelas">
+      <option value="">-- Select Class --</option>
+      <option value="BG143">BG143</option>
+      <option value="BG131">BG131</option>
+      <option value="BG154">BG154</option>
+      <option value="Lainnya">Other (please specify)</option>
+    </select>
+    <input type="text" id="kelasOther" style="display:none;margin-top:8px;" placeholder="Please specify your class">
+
+    <div class="btn-row">
+      <button class="btn" id="btnStart" onclick="startExam()">Start Exercise 1</button>
+    </div>
+    <div style="text-align:center;margin-top:10px;" id="clearDataLinkWrap">
+      <a href="#" onclick="clearState(); return false;" style="font-size:.78rem;color:var(--muted);">Clear saved data on this device</a>
+    </div>
+  </section>
+
+  <!-- SCREEN: EXAM -->
+  <section class="card" id="screen-exam" style="display:none;">
+    <h2 class="section-title" id="examTitle">Exercise</h2>
+    <h3 class="exercise-subtitle" id="examSubtitle"></h3>
+    <div class="banner warn">Choose the best answer for each question (a, b, c, or d). Make sure you have listened to the corresponding audio before answering.</div>
+    <div id="questionsContainer"></div>
+    <div class="btn-row">
+      <button class="btn" id="btnSubmit" onclick="submitExercise()">Submit Exercise</button>
+    </div>
+  </section>
+
+  <!-- SCREEN: REVIEW -->
+  <section class="card" id="screen-review" style="display:none;">
+    <h2 class="section-title" id="reviewTitle">Result</h2>
+    <h3 class="exercise-subtitle" id="reviewSubtitle"></h3>
+
+    <div class="score-box">
+      <div>Your Score</div>
+      <div class="big" id="reviewScore">0/10</div>
+      <div id="reviewSaveStatus" style="font-size:.8rem;color:#cfe0ff;"></div>
+    </div>
+
+    <div id="reviewList"></div>
+
+    <div class="btn-row no-print">
+      <button class="btn secondary" onclick="window.print()">🖨 Print This Result</button>
+      <button class="btn gold" id="btnContinue" onclick="goToNextExercise()">Continue</button>
+    </div>
+  </section>
+
+  <!-- SCREEN: FINAL PROOF -->
+  <section class="card" id="screen-final" style="display:none;">
+    <h2 class="section-title">All Exercises Completed</h2>
+    <h3 class="exercise-subtitle">Here is your official proof of submission</h3>
+
+    <div class="proof-box" id="proofBox">
+      <div class="proof-header">
+        <img src="https://i.ibb.co.com/Gv1xXFQG/logo-Unesa.png" alt="UNESA Logo">
+        <div>
+          <div class="u-name">Universitas Negeri Surabaya (UNESA)</div>
+          <div class="u-sub">Proof of Submission — TOEFL Listening Comprehension Practice, Part A</div>
+        </div>
+      </div>
+
+      <div class="proof-grid">
+        <div><span class="label">Student ID (NIM)</span><span id="pfNim"></span></div>
+        <div><span class="label">Full Name</span><span id="pfNama"></span></div>
+        <div><span class="label">Study Program</span><span id="pfProdi"></span></div>
+        <div><span class="label">Class</span><span id="pfKelas"></span></div>
+      </div>
+
+      <table class="summary-table">
+        <thead>
+          <tr><th>Exercise</th><th>Topic</th><th>Score</th></tr>
+        </thead>
+        <tbody id="finalSummaryBody"></tbody>
+        <tfoot>
+          <tr><th colspan="2">Total</th><th id="finalTotalScore"></th></tr>
+        </tfoot>
+      </table>
+
+      <div class="stamp">
+        <div>Submitted at: <span id="pfTimestamp"></span></div>
+        <div id="pfSaveStatus"></div>
+      </div>
+    </div>
+
+    <div class="btn-row no-print">
+      <button class="btn secondary" onclick="startNew()">Start New Submission</button>
+      <button class="btn gold" onclick="window.print()">🖨 Print / Save Proof of Submission</button>
+    </div>
+  </section>
+
+</main>
+
+<footer class="small no-print">Listening practice web form — built for classroom use. Answers and scores are recorded to Google Sheets after each exercise submission.</footer>
+
+<script>
+/* =========================================================
+   1. CONFIGURATION
+   ========================================================= */
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbww4JvxQFNaJ3QBUwPOF9tkEiBN6U4ZUeJM71JXergWebSny_4IerXTwxz4G5-vA1gE/exec";
+
+/* =========================================================
+   2. QUESTION DATA (from Listening Part A booklet + Script & Answer Key)
+   ========================================================= */
+const EXERCISES = [
+  {
+    title: "Exercise 1",
+    subtitle: "Topics & Details",
+    questions: [
+      { options:["A new doctor","A party they attended","Their friend Mary","A graduate program"], correct:3,
+        script:"Woman: Do you know how many students were accepted in the new doctoral program?\nMan: Well, I saw Mary at the party last night and she said that only six got in.\nNarrator: What are the two people discussing?" },
+      { options:["An exchange program","The man's trip to England","The man's illness","Their friend Nancy"], correct:0,
+        script:"Man: I applied for the exchange program to Europe this year but I couldn't go because I got sick.\nWoman: That's too bad. Nancy went to England last year and she said it was really a great experience.\nNarrator: What are the man and woman discussing?" },
+      { options:["The professor's lecture","The woman's children","The chairs they are sitting in","The size of the lecture room"], correct:2,
+        script:"Man: The chairs in that lecture room are really uncomfortable.\nWoman: You said it. They're so small that my children wouldn't even fit in them.\nNarrator: What are the man and woman talking about?" },
+      { options:["The woman's computer","The woman's paper","The man's hometown","The man's job"], correct:0,
+        script:"Woman: I've had it with my computer. I lost another paper when I tried to save it on a disk.\nMan: You have to do something about that. Why don't you try over at Computer World?\nNarrator: What are the two people discussing?" },
+      { options:["The campus","Registration week","The parking situation","The woman's class"], correct:2,
+        script:"Woman: I was late for class because I couldn't find a parking space.\nMan: It's because of registration week. I drove around for almost half an hour before I found one this morning.\nNarrator: What are the two people talking about?" },
+      { options:["He is tired","He is drunk","He is thirsty","He is busy"], correct:0,
+        script:"Woman: You look awful. Do you have a hangover?\nMan: No, I've been up all night finishing a paper. All I've had to drink is coffee.\nNarrator: What is the man's problem?" },
+      { options:["Study with her","Help her on the test","Take a break","Lend her his notebook"], correct:3,
+        script:"Woman: I lost my notebook. Could I borrow yours before the test?\nMan: I'm sorry, I'd like to help you but I just can't. I have to take it with me to work so I can study on my breaks.\nNarrator: What does the woman want the man to do?" },
+      { options:["Steve's girlfriend","Steve's sister","Steve","Mary Anne"], correct:1,
+        script:"Woman: That looks like Steve's car, but who is that girl driving it?\nMan: Oh, that's Steve's sister. I met her last night at Mary Ann's party.\nNarrator: Who is driving Steve's car?" },
+      { options:["The door is locked","The woman doesn't have the right key","The door is stuck","The doorknob is broken"], correct:2,
+        script:"Man: The door seems to be locked. Do I need a key for the bathroom?\nWoman: No, just push hard. It sticks a little.\nNarrator: Why won't the door open?" },
+      { options:["Check the calculators","Use a calculator to do his test","Purchase a calculator","Borrow a calculator"], correct:1,
+        script:"Man: Can we use our calculators on the test?\nWoman: Yes, if you bring them to me at the beginning of the test, I'll check them out and return them right away so you can use them.\nNarrator: What does the man want to do?" }
+    ]
+  },
+  {
+    title: "Exercise 2",
+    subtitle: "Reversals & Problems",
+    questions: [
+      { options:["She would like eggs and potatoes","She wants eggs and pancakes","She wants to eat potato pancakes","Pancakes is what she would like to eat"], correct:1,
+        script:"Man: Okay, what'll you have?\nWoman: Give me the eggs and potatoes. Oh, wait a minute. How about the eggs and pancakes?\nNarrator: What does the woman want to eat?" },
+      { options:["The man bought one box of cookies","The man ordered four boxes of cookies","He purchased five boxes of cookies","He did not order any cookies this year"], correct:2,
+        script:"Woman: How many boxes of Girl Scout cookies did you order?\nMan: Four. No, five.\nNarrator: How many boxes of cookies did the man order?" },
+      { options:["The number is 6-9-1","The area code is 1-9-6","9-1-6 is the area code","6-1-9 is the correct number"], correct:3,
+        script:"Man: What is the area code from which you are calling?\nWoman: 691... oops, that's not right. It's 619.\nNarrator: What is the correct area code for the woman?" },
+      { options:["See a documentary","Change the channel","Watch television","Go to a movie"], correct:3,
+        script:"Man: Let me see. There's a documentary about wolves on Channel 3.\nWoman: That sounds pretty interesting, but I'd rather go to the movies.\nNarrator: What does the woman want to do?" },
+      { options:["The Country Kitchen","The Country Home","The Old House","The Old Kitchen"], correct:2,
+        script:"Man: Where shall we go for lunch? It's your turn to choose.\nWoman: How about The Country Kitchen? Or better yet, The Old House. They have great salads.\nNarrator: Where will the man and woman eat lunch?" },
+      { options:["He needs his advisor to sign the registration form","He does not have an academic advisor","He does not know how to register for next semester","He can't find his registration"], correct:0,
+        script:"Woman: What's the matter?\nMan: I can't register until I get my advisor's signature on my registration form, and as usual, I can't find him.\nNarrator: What is the man's problem?" },
+      { options:["She does not have a car","She needs a ride","She is late to class","She has to go shopping"], correct:1,
+        script:"Woman: Can you give me a lift? My car's in the shop and I'm already late for work.\nMan: Sure. I'll drop you off on my way to class.\nNarrator: What is the woman's problem?" },
+      { options:["They don't have a good book for their class","They don't like Professor Jones","The professor changed the book this semester","Books are very expensive"], correct:2,
+        script:"Man: Great. Professor Jones is using a different book this semester. Now I'll have to buy a new one.\nWoman: Me too. My friend let me have a copy of the book he used last semester, but that won't do me any good now.\nNarrator: What is the problem that the man and woman are talking about?" },
+      { options:["She has to wait for the telephone to be installed","She does not have a telephone","She has already seen the movie","She cannot go to the movie because she has company"], correct:0,
+        script:"Woman: Sorry. I have to stay here until someone comes from the phone company to install my phone.\nMan: That's too bad. I wish you could go with us to the movie.\nNarrator: What is the woman's problem?" },
+      { options:["She needs child care that is closer to the university","She needs someone to take care of her children while she is in class","She needs the man to help her more with the children","She needs to spend more time with the children"], correct:0,
+        script:"Woman: If the university had child care on campus, it would make my life a lot easier.\nMan: It really would. It must take a lot of time going back and forth to daycare all the way across town.\nNarrator: What is the woman's problem?" }
+    ]
+  },
+  {
+    title: "Exercise 3",
+    subtitle: "Idioms & Emotions",
+    questions: [
+      { options:["She does not think that the man is serious","She thinks that the man is going to take her to Florida","She thinks that the man has a good idea","She thinks that the man does not have any money"], correct:0,
+        script:"Man: Let's go to Florida on spring break.\nWoman: You're putting me on.\nNarrator: What does the woman mean?" },
+      { options:["She needs one more semester","She needs a hundred dollars","The increase will be difficult for her","The paper is not dependable"], correct:2,
+        script:"Man: Can you believe it? It says in the paper that tuition is going up another hundred dollars a semester.\nWoman: That's just what I need.\nNarrator: What does the woman mean?" },
+      { options:["He has left the lecture","He has used his last piece of paper","He has said good-bye to the woman","He has finished giving the lecture"], correct:1,
+        script:"Man: Can you let me borrow some paper? This lecture is so long that I've run out.\nWoman: Sure. Here you go.\nNarrator: What did the man do?" },
+      { options:["He feels that the test was fair","He agrees with the woman about the test","He does not want the woman to tease him about the test","He is not worried about the test"], correct:1,
+        script:"Woman: That test was not what I studied for.\nMan: No joke. I hope I passed it.\nNarrator: How does the man feel about the test?" },
+      { options:["The man likes ice cream","The man will tell the woman later whether he wants ice cream","The man does not want to say whether he likes ice cream","The man will get some ice cream for the woman"], correct:0,
+        script:"Woman: Do you like ice cream?\nMan: I'll say.\nNarrator: What does the man mean?" },
+      { options:["He is angry with the woman","He wants to talk with the woman","It was a bad day for the man","He does not know what day it is"], correct:2,
+        script:"Woman: How was your day?\nMan: Don't ask.\nNarrator: What does the man mean?" },
+      { options:["He is worried","He is happy","He feels confident","He feels tired"], correct:2,
+        script:"Woman: Are you worried about getting a job after graduation?\nMan: No, I've had several good interviews and I can always work for my dad for a while.\nNarrator: How does the man feel?" },
+      { options:["She does not know whether she did well","She thinks that she improved her score","She believes that she scored about 490","She is concerned about the reading comprehension section"], correct:1,
+        script:"Man: Did you get your TOEFL scores yet?\nWoman: Not yet, but I think I got more than 500. I had 490 the first time I took it, and I know I did much better this time because I knew a lot about several of the reading comprehension passages.\nNarrator: How does the woman feel about the TOEFL?" },
+      { options:["She believes that he is having a bad day","She does not like the man","She thinks that he never pays attention","She likes to help the man every day"], correct:2,
+        script:"Man: What page are we on? I'm just not with it today.\nWoman: Or any other day.\nNarrator: How does the woman feel about the man?" },
+      { options:["He is surprised","He is confused","He does not agree","He does not want to know"], correct:0,
+        script:"Woman: I heard that Professor Saunders has retired.\nMan: What?\nNarrator: What is the man's reaction to the news?" }
+    ]
+  },
+  {
+    title: "Exercise 4",
+    subtitle: "Suggestions & Assumption",
+    questions: [
+      { options:["Return later","Telephone the security guard","Stay at the dorm","Look for the key"], correct:1,
+        script:"Woman: Oh no, we're locked out of the dorm. I didn't think it was that late.\nMan: Do you have a phone number for the security guard?\nNarrator: What does the man suggest the woman do?" },
+      { options:["Find another bathroom","Use the bathroom in the main lobby","Ask the custodian to unlock the bathroom","Go to another building to locate a bathroom"], correct:2,
+        script:"Man: All the bathrooms are locked. That's odd.\nWoman: Why don't you go down to the main lobby? I think I saw a custodian there when we came in.\nNarrator: What does the woman suggest that the man do?" },
+      { options:["Get in line behind him","Take a number","Come back later","Go to the end of the line"], correct:1,
+        script:"Woman: Are you in line here?\nMan: We all are. You need to take a number.\nNarrator: What does the man suggest that the woman do?" },
+      { options:["Pick her up at 11:35 A.M","Wait for her at the airport","Wait for her to call him","Call the airport for the schedule"], correct:2,
+        script:"Man: I'll be glad to pick you up at the airport. What time does your plane arrive?\nWoman: Well, it's scheduled to be here at 11:35, but it might be late if the weather is bad out of Chicago. Why don't I call you when I get in?\nNarrator: What does the woman suggest that the man do?" },
+      { options:["Refer to the syllabus","Go to Dr. Watson's office","See Dr. Watson at 2:00 P.M.","Ask someone else"], correct:0,
+        script:"Woman: When does Dr. Watson have her office hours this semester?\nMan: I think her hours are from two to three o'clock every day. I'm not sure, but I know it's on the syllabus.\nNarrator: What does the man suggest that the woman do?" },
+      { options:["The test would not be timed","The test could be taken home to complete","He would be able to use his book during the test.","He would have to study very hard for the test"], correct:2,
+        script:"Man: You mean this test isn't open book?\nWoman: Not this time.\nNarrator: What had the man assumed about the test?" },
+      { options:["She would not have lunch","She would not start dating Phil again","She would have lunch with him","She would have to go before lunch"], correct:1,
+        script:"Man: You mean you are going out with Phil again?\nWoman: Just for lunch.\nNarrator: What had the man assumed about the woman?" },
+      { options:["She was younger","She was having a birthday party","She was joking with him","She would invite him to her house"], correct:0,
+        script:"Woman: My daughter's first birthday is Saturday. Why don't you come?\nMan: You don't mean it. She can't be a year old already.\nNarrator: What had the man assumed about the woman's daughter?" },
+      { options:["He was serious about becoming a doctor","He was not serious about changing majors","He was serious about going into the family business","He was not serious about applying for the business program"], correct:1,
+        script:"Woman: John must have been joking when he said he was going to drop out of the business program to apply for medical school.\nMan: I don't think so. He seemed very serious to me.\nNarrator: What had the woman assumed about John?" },
+      { options:["He would be late getting to the lab","He would be in the lab working","He would not set up the equipment","He would not have time to set up the equipment"], correct:0,
+        script:"Man: When we got there, Mr. Brown was already in the lab getting the equipment set up.\nWoman: You mean he was on time?\nNarrator: What had the woman assumed about Mr. Brown?" }
+    ]
+  }
+];
+const LETTERS = ["A","B","C","D"];
+
+/* =========================================================
+   3. STATE  (auto-saved to this browser's storage so nothing is
+      lost if the page is refreshed or accidentally closed, right
+      up until the final exercise is submitted)
+   ========================================================= */
+const STORAGE_KEY = "toeflListeningProgress_v1";
+
+let student = { nim:"", nama:"", prodi:"", kelas:"" };
+let currentExercise = 0;
+let results = [];            // completed exercises: {title, subtitle, score, total}
+let currentAnswers = {};     // in-progress radio choices for the exercise being worked on: {questionIndex: optionIndex}
+let currentScreen = "info";  // "info" | "exam" | "review" | "final"
+let lastReview = null;       // {exerciseIdx, answers, score} needed to redraw the review screen after a refresh
+let finalTimestamp = null;   // when all 4 exercises were completed (kept stable across refreshes)
+
+function saveState(){
+  const rawInfo = {
+    nim: document.getElementById("nim").value,
+    nama: document.getElementById("nama").value,
+    prodi: document.getElementById("prodi").value,
+    prodiOther: document.getElementById("prodiOther").value,
+    kelas: document.getElementById("kelas").value,
+    kelasOther: document.getElementById("kelasOther").value
+  };
+  const state = { screen: currentScreen, rawInfo, student, currentExercise, results, currentAnswers, lastReview, finalTimestamp };
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){ /* storage unavailable — continue silently */ }
+}
+
+function loadState(){
+  try{
+    const s = localStorage.getItem(STORAGE_KEY);
+    return s ? JSON.parse(s) : null;
+  }catch(e){ return null; }
+}
+
+function clearState(){
+  try{ localStorage.removeItem(STORAGE_KEY); }catch(e){}
+  location.reload();
+}
+
+function startNew(){
+  if(confirm("Start a new submission? This will clear any saved progress for the current student on this device/browser.")){
+    clearState();
+  }
+}
+
+/* =========================================================
+   4. UI HELPERS
+   ========================================================= */
+function renderProgressBar(activeIdx, mode){
+  const bar = document.getElementById("progressBar");
+  bar.innerHTML = "";
+  EXERCISES.forEach((ex, i)=>{
+    const div = document.createElement("div");
+    div.className = "progress-step";
+    if (mode==="info") { /* none active */ }
+    else if (i < activeIdx || (i===activeIdx && mode==="review-done")) div.classList.add("done");
+    else if (i===activeIdx) div.classList.add("active");
+    div.textContent = ex.title;
+    bar.appendChild(div);
+  });
+}
+
+function showScreen(id){
+  ["screen-info","screen-exam","screen-review","screen-final"].forEach(s=>{
+    document.getElementById(s).style.display = (s===id)?"block":"none";
+  });
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+/* =========================================================
+   5. STUDENT INFO
+   ========================================================= */
+["nim","nama","prodiOther","kelasOther"].forEach(id=>{
+  document.getElementById(id).addEventListener("input", saveState);
+});
+document.getElementById("prodi").addEventListener("change", function(){
+  document.getElementById("prodiOther").style.display = (this.value==="Lainnya") ? "block":"none";
+  saveState();
+});
+document.getElementById("kelas").addEventListener("change", function(){
+  document.getElementById("kelasOther").style.display = (this.value==="Lainnya") ? "block":"none";
+  saveState();
+});
+
+function startExam(){
+  const nim = document.getElementById("nim").value.trim();
+  const nama = document.getElementById("nama").value.trim();
+  let prodi = document.getElementById("prodi").value;
+  const prodiOther = document.getElementById("prodiOther").value.trim();
+  let kelas = document.getElementById("kelas").value;
+  const kelasOther = document.getElementById("kelasOther").value.trim();
+
+  if(!nim || !nama || !prodi || !kelas){
+    alert("Please complete all required fields (NIM, Full Name, Study Program, Class).");
+    return;
+  }
+  if(prodi==="Lainnya"){
+    if(!prodiOther){ alert("Please specify your study program."); return; }
+    prodi = prodiOther;
+  }
+  if(kelas==="Lainnya"){
+    if(!kelasOther){ alert("Please specify your class."); return; }
+    kelas = kelasOther;
+  }
+
+  student = { nim, nama, prodi, kelas };
+  currentExercise = 0;
+  results = [];
+  currentAnswers = {};
+  lastReview = null;
+  currentScreen = "exam";
+  saveState();
+  loadExercise(0);
+}
+
+/* =========================================================
+   6. EXAM SCREEN
+   ========================================================= */
+function loadExercise(idx, restore){
+  currentExercise = idx;
+  if(!restore){ currentAnswers = {}; }
+  currentScreen = "exam";
+  saveState();
+
+  const ex = EXERCISES[idx];
+  document.getElementById("examTitle").textContent = ex.title;
+  document.getElementById("examSubtitle").textContent = ex.subtitle;
+
+  const container = document.getElementById("questionsContainer");
+  container.innerHTML = "";
+  ex.questions.forEach((q, qi)=>{
+    const block = document.createElement("div");
+    block.className = "question-block";
+    let optsHtml = "";
+    q.options.forEach((opt, oi)=>{
+      const checkedAttr = (currentAnswers[qi] !== undefined && Number(currentAnswers[qi])===oi) ? "checked" : "";
+      optsHtml += `
+        <label class="option-row">
+          <input type="radio" name="q${qi}" value="${oi}" ${checkedAttr}>
+          <span><span class="option-letter">${LETTERS[oi]}.</span> ${opt}</span>
+        </label>`;
+    });
+    block.innerHTML = `<div class="qnum">Question ${qi+1}</div>${optsHtml}`;
+    container.appendChild(block);
+  });
+
+  // save every answer choice immediately, so a refresh never loses progress
+  container.querySelectorAll('input[type=radio]').forEach(inp=>{
+    inp.addEventListener("change", function(){
+      const qi = this.name.replace("q","");
+      currentAnswers[qi] = this.value;
+      saveState();
+    });
+  });
+
+  renderProgressBar(idx, "exam");
+  showScreen("screen-exam");
+}
+
+function submitExercise(){
+  const ex = EXERCISES[currentExercise];
+  const answers = [];
+  for(let qi=0; qi<ex.questions.length; qi++){
+    const checked = document.querySelector(`input[name="q${qi}"]:checked`);
+    if(!checked){
+      alert(`Please answer Question ${qi+1} before submitting.`);
+      return;
+    }
+    answers.push(parseInt(checked.value,10));
+  }
+
+  let score = 0;
+  ex.questions.forEach((q, qi)=>{ if(answers[qi]===q.correct) score++; });
+
+  results.push({ title: ex.title, subtitle: ex.subtitle, score, total: ex.questions.length });
+  lastReview = { exerciseIdx: currentExercise, answers, score };
+  currentAnswers = {};
+  currentScreen = "review";
+  saveState();
+
+  renderReview(currentExercise, answers, score);
+  sendToSheet(ex, answers, score);
+}
+
+/* =========================================================
+   7. REVIEW SCREEN (script + answer key)
+   ========================================================= */
+function renderReview(idx, answers, score){
+  const ex = EXERCISES[idx];
+  document.getElementById("reviewTitle").textContent = ex.title + " — Result";
+  document.getElementById("reviewSubtitle").textContent = ex.subtitle;
+  document.getElementById("reviewScore").textContent = `${score}/${ex.questions.length}`;
+  document.getElementById("reviewSaveStatus").textContent = "Saving your result...";
+
+  const list = document.getElementById("reviewList");
+  list.innerHTML = "";
+  ex.questions.forEach((q, qi)=>{
+    const isCorrect = answers[qi]===q.correct;
+    const div = document.createElement("div");
+    div.className = "review-item " + (isCorrect ? "correct":"wrong");
+    div.innerHTML = `
+      <div class="status">${isCorrect ? "Correct" : "Incorrect"} — Question ${qi+1}</div>
+      <div class="ans-line">Your answer: <b>${LETTERS[answers[qi]]}. ${q.options[answers[qi]]}</b></div>
+      ${isCorrect ? "" : `<div class="ans-line">Correct answer: <b>${LETTERS[q.correct]}. ${q.options[q.correct]}</b></div>`}
+      <div class="script"><b>Script:</b>\n${q.script}</div>
+    `;
+    list.appendChild(div);
+  });
+
+  const btn = document.getElementById("btnContinue");
+  btn.textContent = (idx < EXERCISES.length-1) ? `Continue to ${EXERCISES[idx+1].title}` : "Finish & Get Submission Proof";
+
+  renderProgressBar(idx, "review-done");
+  showScreen("screen-review");
+}
+
+function goToNextExercise(){
+  if(currentExercise < EXERCISES.length-1){
+    loadExercise(currentExercise+1);
+  } else {
+    renderFinal();
+  }
+}
+
+/* =========================================================
+   8. FINAL PROOF SCREEN
+   ========================================================= */
+function renderFinal(){
+  currentScreen = "final";
+  if(!finalTimestamp){ finalTimestamp = new Date().toISOString(); }
+  saveState();
+
+  document.getElementById("pfNim").textContent = student.nim;
+  document.getElementById("pfNama").textContent = student.nama;
+  document.getElementById("pfProdi").textContent = student.prodi;
+  document.getElementById("pfKelas").textContent = student.kelas;
+
+  const tbody = document.getElementById("finalSummaryBody");
+  tbody.innerHTML = "";
+  let totalScore = 0, totalMax = 0;
+  results.forEach(r=>{
+    totalScore += r.score;
+    totalMax += r.total;
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${r.title}</td><td>${r.subtitle}</td><td>${r.score}/${r.total}</td>`;
+    tbody.appendChild(tr);
+  });
+  document.getElementById("finalTotalScore").textContent = `${totalScore}/${totalMax}`;
+  document.getElementById("pfTimestamp").textContent = new Date(finalTimestamp).toLocaleString();
+  document.getElementById("pfSaveStatus").textContent = "All results recorded ✓";
+
+  renderProgressBar(EXERCISES.length-1, "review-done");
+  showScreen("screen-final");
+}
+
+/* =========================================================
+   9. SEND RESULT TO GOOGLE SHEET (Apps Script Web App)
+   ========================================================= */
+function sendToSheet(ex, answers, score){
+  const statusEl = document.getElementById("reviewSaveStatus");
+
+  if(!WEB_APP_URL || WEB_APP_URL.indexOf("PASTE_YOUR")===0){
+    statusEl.textContent = "Not connected to Google Sheet yet (ask your instructor to finish setup).";
+    return;
+  }
+
+  const payload = {
+    timestamp: new Date().toISOString(),
+    nim: student.nim,
+    nama: student.nama,
+    prodi: student.prodi,
+    kelas: student.kelas,
+    exercise: ex.title,
+    exerciseTopic: ex.subtitle,
+    answers: answers.map(a=>LETTERS[a]).join(","),
+    correctAnswers: ex.questions.map(q=>LETTERS[q.correct]).join(","),
+    score: score,
+    total: ex.questions.length
+  };
+
+  fetch(WEB_APP_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {"Content-Type":"text/plain;charset=utf-8"},
+    body: JSON.stringify(payload)
+  }).then(()=>{
+    statusEl.textContent = "Result recorded to Google Sheet ✓";
+  }).catch(()=>{
+    statusEl.textContent = "Could not reach the server. Please check your internet connection.";
+  });
+}
+
+/* =========================================================
+   10. RESTORE ON PAGE LOAD
+   ========================================================= */
+function restoreOnLoad(){
+  const saved = loadState();
+  if(!saved){
+    renderProgressBar(0, "info");
+    return;
+  }
+
+  // restore the raw info-screen field values (useful if the student refreshes before clicking Start)
+  if(saved.rawInfo){
+    document.getElementById("nim").value = saved.rawInfo.nim || "";
+    document.getElementById("nama").value = saved.rawInfo.nama || "";
+    document.getElementById("prodi").value = saved.rawInfo.prodi || "";
+    document.getElementById("prodiOther").value = saved.rawInfo.prodiOther || "";
+    document.getElementById("kelas").value = saved.rawInfo.kelas || "";
+    document.getElementById("kelasOther").value = saved.rawInfo.kelasOther || "";
+    document.getElementById("prodiOther").style.display = (saved.rawInfo.prodi==="Lainnya") ? "block":"none";
+    document.getElementById("kelasOther").style.display = (saved.rawInfo.kelas==="Lainnya") ? "block":"none";
+  }
+
+  student = saved.student || student;
+  results = saved.results || [];
+  currentExercise = saved.currentExercise || 0;
+  currentAnswers = saved.currentAnswers || {};
+  lastReview = saved.lastReview || null;
+  finalTimestamp = saved.finalTimestamp || null;
+
+  if(saved.screen === "exam"){
+    loadExercise(currentExercise, true);
+  } else if(saved.screen === "review" && lastReview){
+    renderReview(lastReview.exerciseIdx, lastReview.answers, lastReview.score);
+    document.getElementById("reviewSaveStatus").textContent = "Result restored (already recorded earlier).";
+  } else if(saved.screen === "final"){
+    renderFinal();
+  } else {
+    renderProgressBar(0, "info");
+  }
+}
+
+restoreOnLoad();
+</script>
+</body>
+</html>
